@@ -1,10 +1,15 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const sessionMiddleware = require("./config/session");
 const authRoutes = require("./routes/authRoutes");
 const requireAuth = require("./middleware/requireAuth");
+const videoRoutes = require("./routes/videoRoutes");
 
 const app = express();
+
+app.set("trust proxy", 1);
 
 // view engine
 app.set("view engine", "ejs");
@@ -24,6 +29,8 @@ app.use((req, res, next) => {
 
 // routes
 app.use(authRoutes);
+app.use(videoRoutes);
+
 
 // protected home
 app.get("/", requireAuth, (req, res) => {
