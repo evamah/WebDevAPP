@@ -15,7 +15,7 @@ db.serialize(() => {
     )
   `);
 
-  // Favorites table (per user)
+  // favorites table (per user)
   db.run(`
     CREATE TABLE IF NOT EXISTS Favorites (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +29,5 @@ db.serialize(() => {
     )
   `);
 });
-
 
 module.exports = db;
